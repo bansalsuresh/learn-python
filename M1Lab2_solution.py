@@ -19,7 +19,7 @@ def get_dataset_path():
     # Get the current script directory
     current_dir = os.path.dirname(os.path.abspath(__file__))
     # Construct the path to the CSV file
-    csv_path = os.path.join(current_dir, "..", "..", "..", ".", "customer_reviews.csv")
+    csv_path = os.path.join(current_dir, "..", "..", "..", "data", "customer_reviews.csv")
     return csv_path
 
 
@@ -55,8 +55,8 @@ col1, col2 = st.columns(2)
 with col1:
     if st.button("📥 Load Dataset"):
         try:
-            csv_path = get_dataset_path()
-            df = pd.read_csv(csv_path)
+            #csv_path = get_dataset_path()
+            df = pd.read_csv("customer_reviews.csv")
             st.session_state["df"] = df.head(10)
             st.success("Dataset loaded successfully!")
         except FileNotFoundError:
